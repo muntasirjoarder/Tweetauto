@@ -15,8 +15,28 @@ from selenium.webdriver.support import expected_conditions as EC
 # Configuration
 PROFILE_PATH = "Tweetify"  # Edge profile name
 ACCOUNTS = [
-    "https://x.com/Timesofgaza"
+    "https://x.com/gazanotice",
+    "https://x.com/QudsNen",
+    "https://x.com/MuhammadSmiry",
+    "https://x.com/AbujomaaGaza",
+    "https://x.com/EyeonPalestine",
+    "https://x.com/Timesofgaza",
+    "https://x.com/yousef_ki1",
+    "https://x.com/SuppressedNws",
+    "https://x.com/abierkhatib",
+    "https://x.com/MiddleEastEye",
+    "https://x.com/dn_osama_rabee",
+    "https://x.com/swilkinsonbc",
+    "https://x.com/rebuildgaza24",
+    "https://x.com/translatingpal",
+    "https://x.com/wizardbisan",
+    "https://x.com/ytirawi",
+    "https://x.com/mhdksafa"
 ]
+
+# Randomly select 10 unique accounts from the ACCOUNTS array
+SELECTEDACCOUNTS = random.sample(ACCOUNTS, 10)
+
 MAX_TWEETS_PER_ACCOUNT = 10
 
 
@@ -267,11 +287,11 @@ def main():
     
     try:
         # Shuffle accounts for random order
-        random.shuffle(ACCOUNTS)
+        random.shuffle(SELECTEDACCOUNTS)
         
         # Scrape tweets from each account
         all_tweet_urls = []
-        for account in ACCOUNTS:
+        for account in SELECTEDACCOUNTS:
             try:
                 tweet_urls = scrape_tweet_urls(driver, account)
                 all_tweet_urls.extend(tweet_urls)
