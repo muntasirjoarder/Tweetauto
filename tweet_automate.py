@@ -42,6 +42,7 @@ def close_edge_processes():
         time.sleep(2)  # Give time for processes to end
     return closed
 
+
 def get_exact_edge_profile_path(profile_name="Tweetify"):
     """Find the exact Edge profile path"""
     base_path = os.path.join(os.getenv('LOCALAPPDATA'), 'Microsoft', 'Edge', 'User Data')
@@ -248,16 +249,8 @@ def retweet_if_needed(driver, tweet_url):
             confirm_button.click()
             print("Retweeted successfully")
             
-            # Sometimes like the tweet after retweeting (human behavior)
-            if random.random() > 0.7:  # 30% chance to like after retweeting
-                try:
-                    like_button = driver.find_element(By.CSS_SELECTOR, "[data-testid='like']")
-                    human_delay("standard")
-                    like_button.click()
-                    print("Also liked the tweet")
-                except:
-                    pass
-                
+            # Removed the code that likes tweets after retweeting
+            
             human_delay("standard")  # Pause after completion
             return True  # Successfully retweeted
         else:
@@ -267,7 +260,7 @@ def retweet_if_needed(driver, tweet_url):
     except Exception as e:
         print(f"Could not retweet: {str(e)}")
         return False  # Failed to retweet
-
+    
 def main():
     driver = setup_driver()
     retweet_count = 0  # Initialize counter for successful retweets
