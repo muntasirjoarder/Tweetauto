@@ -4,7 +4,7 @@ SETLOCAL
 :: Check if the virtual environment exists
 if not exist "..\venv_tweet\" (
     echo Creating Python virtual environment...
-    python -m venv ..\venv_tweet
+    py -m venv ..\venv_tweet
     if %ERRORLEVEL% neq 0 (
         echo Failed to create virtual environment
         pause
@@ -34,7 +34,7 @@ if %ERRORLEVEL% neq 0 (
 
 :: Run the Python program
 echo Running tweet_automate.py...
-python tweet_automate.py
+py tweet_automate.py
 if %ERRORLEVEL% neq 0 (
     echo The Python script exited with an error
     pause
